@@ -42,7 +42,7 @@ ingress:
   annotations: {}
   # example configuration
   hosts:
-    - host: application.cubix.com
+    - host: application.cubix.localhost
       paths:
         - path: /
           pathType: Prefix
