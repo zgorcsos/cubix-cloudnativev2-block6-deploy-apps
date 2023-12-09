@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/drsylent/cubix/cloudnative4/api
+  repository: ghcr.io/drsylent/cubix/cloudnative5/api
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
