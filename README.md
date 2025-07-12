@@ -1,4 +1,4 @@
-# Cubix Cloud-Native Application Development Training: cloud-native requirements (app deployment)
+# Cubix Cloud-Native Application Development Training: cloud-native requirements (app deployment) 
 
 Fork this repository for the practice session.
 
