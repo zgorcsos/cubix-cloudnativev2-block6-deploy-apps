@@ -33,22 +33,26 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           startupProbe: 
             periodSeconds: 5
-            failureTreshold: 5
+            failureThreshold: 5
             tcpSocket:
               port: 8080
           livenessProbe: 
             periodSeconds: 5
-            failureTreshold: 5
-            tcpSocket:
-              port: http
-          redinessProbe: 
+            failureThreshold: 5
+            httpGet:
+              port: management
+              path: /actuator/health/liveness
+          readinessProbe: 
             periodSeconds: 5
-            failureTreshold: 5
-            tcpSocket:
-              port: http
+            failureThreshold: 5
+            httpGet:
+              port: management
+              path: /actuator/health/readiness
           env:
           - name: JAVA_OPTS
             value: {{ .Values.javaOpts | quote }}
+          - name: MANAGEMENT_SERVER_PORT
+            value: "9080"
           {{- range .Values.env }}
           - name: {{ .name }}
             value: {{ .value | quote }}
@@ -56,6 +60,9 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+              protocol: TCP
+            - name: management
+              containerPort: 9080
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
