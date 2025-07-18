@@ -40,7 +40,7 @@ spec:
           {{- if and .Values.configMap.enabled (eq .Values.configMap.as "file") }}
           volumeMounts:
           - name: config
-            mountPath: /config
+            mountPath: /opt/app/config
           {{- end }}
           startupProbe: 
             periodSeconds: 5
