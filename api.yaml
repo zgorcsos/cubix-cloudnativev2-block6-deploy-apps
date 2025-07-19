@@ -5,7 +5,7 @@ image:
   tag: "latest"
 
 configMap:
-  enabled: true
+  enabled: false
   as: file
 ingress:
   enabled: true
@@ -14,3 +14,10 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+openTelemetry:
+  targetUrl: http://tempo.tools:4317
+
+env:
+  - name: API_MESSAGE_URL
+    value: http://db-spring-cubix:8080

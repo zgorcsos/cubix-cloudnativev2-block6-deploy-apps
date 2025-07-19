@@ -5,8 +5,22 @@ image:
   tag: "latest"
 
 configMap:
-  enabled: true
+  enabled: false
   as: file
+
+openTelemetry:
+  targetUrl: http://tempo.tools:4317
+
+env:
+  - name: SPRING_DATASOURCE_URL
+    value: jdbc:postgresql://postgresql:5432/postgres
+  - name: SPRING_DATASOURCE_USERNAME
+    value: user
+  - name: SPRING_DATASOURCE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db-password
+        key: password
 
 secret:
   - secretName: db-password

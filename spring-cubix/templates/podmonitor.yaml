@@ -4,6 +4,7 @@ metadata:
   name: {{ include "spring-cubix.fullname" . }}
   labels:
     {{- include "spring-cubix.labels" . | nindent 4 }}
+    release: prometheus-operator
 spec:
   podMetricsEndpoints:
     - port: management
